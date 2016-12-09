@@ -1,16 +1,14 @@
 # ActiveRecord::Rack
 
-Provides `class ConnectionManagement` for standalone ActiveRecord apps built on top of Rack.
+Provides database connection management for standalone ActiveRecord apps built on top of Rack.
+
+[![Build Status](https://secure.travis-ci.org/ioquatix/activerecord-rack.svg)](http://travis-ci.org/ioquatix/activerecord-rack)
+[![Code Climate](https://codeclimate.com/github/ioquatix/activerecord-rack.svg)](https://codeclimate.com/github/ioquatix/activerecord-rack)
+[![Coverage Status](https://coveralls.io/repos/ioquatix/activerecord-rack/badge.svg)](https://coveralls.io/r/ioquatix/activerecord-rack)
 
 ## Motivation
 
-Unfortunately, in ActiveRecord 5.0, the `class ConnectionManagent` [was removed](https://github.com/rails/rails/issues/26947). So, I've copied it from 4.2 and released it here. The only difference was that I removed the conditional for testing.. so that it could be tested. If you want to restore this behaviour, I suggest you write
-
-```ruby
-unless RACK_ENV == :test
-	use ActiveRecord::Rack::ConnectionManagement
-end
-```
+Unfortunately, in ActiveRecord 5.0, the `class ConnectionManagent` [was removed](https://github.com/rails/rails/issues/26947). So, I've copied it from 4.2 and released it here with minor improvements.
 
 ## Installation
 
@@ -29,6 +27,16 @@ In your `config.ru`, before any middleware that would use the database, insert:
 use ActiveRecord::Rack::ConnectionManagement
 ```
 
+### Testing
+
+I removed the auto-detection of a test environment from the original middleware. I did this because I like predictable and simple logic. If you want to restore this behaviour, I suggest you write
+
+```ruby
+unless RACK_ENV == :test
+	use ActiveRecord::Rack::ConnectionManagement
+end
+```
+
 ## Contributing
 
 1. Fork it
@@ -36,6 +44,10 @@ use ActiveRecord::Rack::ConnectionManagement
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## See Also
+
+- [ActiveRecord::Migrations](https://github.com/ioquatix/activerecord-migrations)
 
 ## License
 
