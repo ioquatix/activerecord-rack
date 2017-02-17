@@ -23,6 +23,8 @@ gem 'activerecord-rack'
 In your `config.ru`, before any middleware that would use the database, insert:
 
 ```ruby
+require 'active_record/rack'
+
 # Middleware below this point may require database access:
 use ActiveRecord::Rack::ConnectionManagement
 ```
