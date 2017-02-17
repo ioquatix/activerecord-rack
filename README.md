@@ -8,7 +8,7 @@ Provides database connection management for standalone ActiveRecord apps built o
 
 ## Motivation
 
-Unfortunately, in ActiveRecord 5.0, the `class ConnectionManagent` [was removed](https://github.com/rails/rails/issues/26947). So, I've copied it from 4.2 and released it here with minor improvements.
+Unfortunately, in ActiveRecord 5.0, the `class ConnectionManagement` [was removed](https://github.com/rails/rails/issues/26947). So, I've copied it from 4.2 and released it here with minor improvements.
 
 ## Installation
 
